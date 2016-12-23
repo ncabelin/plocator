@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Psych-unit Locator</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <!-- iOS icons -->
+    <link rel="apple-touch-icon" href="images/Icon@2x.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/plu.ico" />
+
+    <!-- bootstrap and fontawesome css -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:700|Noto+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- angularJS, googleAPIs, jquery and bootstrap jquery js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.7/angular-route.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDX3KhwqJr6YqH9uxLGstihUMKsnxn3-Go",
+        authDomain: "psych-unit-locator.firebaseapp.com",
+        databaseURL: "https://psych-unit-locator.firebaseio.com",
+        storageBucket: ""
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      line-height: 1.5;
+      font-size: 19px;
+      color: #616161;
+      background-color: #f8f8f8;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+    .form-box {
+      -webkit-box-shadow: 4px 10px 5px -8px rgba(0,0,0,0.16);
+      -moz-box-shadow: 4px 10px 5px -8px rgba(0,0,0,0.16);
+      box-shadow: 4px 10px 5px -8px rgba(0,0,0,0.16);
+      background-color: white;
+      border: 1px solid #d7d7d7;
+      margin: 10px;
+    }
+
+    .form-box ul li {
+      list-style: none;
+    }
+
+    .form-box ul {
+      padding: 10px;
+    }
+
+    .btn {
+      border-radius: 0;
+    }
+
+    .menuItem {
+      font-family: 'Lato', sans-serif;
+    }
+
+    @media (max-width:768px) {
+      body {
+        font-size: 16px;
+      }
+    }
+
+    </style>
+</head>
+<body ng-app="pulApp">
+  <nav class="navbar navbar-default headerNav">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand menuItem" href="#/home">L.A. County Psych-unit Locator</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right text-center">
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#/zipcode" class="menuItem text-center">By Zipcode</a></li>
+              <li><a href="#/gps" class="menuItem text-center">By Location</a></li>
+            </ul>
+          </li>
+          <li><a href="#/contacts" class="menuItem">Contacts</a></li>
+          <li><a href="#/login" class="menuItem">Login</a></li>
+          <li><a href="#/help" class="menuItem">Help</a></li>
+          <li><a href="#/about" class="menuItem">About</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <section>
+    <div ng-view class="view"></div>
+  </section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <p class="text-center">Copyright &copy; Potentum Studios</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="http://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    var menuBtn = $('.menuItem'),
+        navBtn = $('.navbar-toggle');
+    menuBtn.click(function() {
+      navBtn.trigger('click');
+    });
+  });
+</script>
+</html>
